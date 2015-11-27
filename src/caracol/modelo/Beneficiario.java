@@ -3,6 +3,8 @@ package caracol.modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
 public class Beneficiario extends Persona{
 	//Atributos
 	private int id_Beneficiario;	//PK
@@ -73,5 +75,13 @@ public class Beneficiario extends Persona{
 	public int borrar_beneficiario(Curso curso) {
 		int res = 0;
 		return res;
+	}
+	
+	public ResultSet listar_beneficiario() {
+		String com = "SELECT * FROM Persona ORDER BY nombre";
+		
+		ResultSet rs = cx.getDatos(com);
+		
+		return rs;
 	}
 }

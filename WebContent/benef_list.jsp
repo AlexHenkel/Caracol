@@ -45,49 +45,14 @@
             </header>
         </section>
     </section>
-    <section class="sign-up section-padding text-center" id="download">
+    <section class="sign-up section-padding" id="download">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="dashboard-title">Dashboard</h2>
+                    <h2 class="dashboard-title">Lista de alumnos</h2>
                     <div class="main">
-                        <ul class="cbp-ig-grid">
-                            <li>
-                                <a href="benef_add.jsp">
-                                    <span class="cbp-ig-icon cbp-ig-icon-shoe"></span>
-                                    <h3 class="cbp-ig-title">Agregar beneficiario</h3>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="benef_list.jsp">
-                                    <span class="cbp-ig-icon cbp-ig-icon-ribbon"></span>
-                                    <h3 class="cbp-ig-title">Lista de beneficiarios</h3>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="curso_add.jsp">
-                                    <span class="cbp-ig-icon cbp-ig-icon-milk"></span>
-                                    <h3 class="cbp-ig-title">Agregar curso</h3>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="cursos_list.php">
-                                    <span class="cbp-ig-icon cbp-ig-icon-whippy"></span>
-                                    <h3 class="cbp-ig-title">Lista de cursos</h3>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <span class="cbp-ig-icon cbp-ig-icon-spectacles"></span>
-                                    <h3 class="cbp-ig-title">Inscripciones</h3>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="list.php">
-                                    <span class="cbp-ig-icon cbp-ig-icon-doumbek"></span>
-                                    <h3 class="cbp-ig-title">Tomar lista</h3>
-                                </a>
-                            </li>
+                        <ul>
+							<jsp:include page="listBeneficiario.jsp" flush="true" />
                         </ul>
                     </div>
 
@@ -124,15 +89,18 @@
             </div>
         </div>
     </footer>
+
+	<jsp:include page="listBeneficiarioModal.jsp" flush="true" />
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="retina.js"></script>
+    <script src="bower_components/retina.js/dist/retina.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider-min.js"></script>
-    <script src="js/vendor/classie.js"></script>
-    <script src="js/vendor/jquery.waypoints.min.js"></script>
+    <script src="bower_components/classie/classie.js"></script>
+    <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
     <script src="js/vendor/parallax.min.js"></script>
 </body>
 </html>

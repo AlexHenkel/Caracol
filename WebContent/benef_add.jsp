@@ -119,48 +119,48 @@
     </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="bower_components/retina.js/dist/retina.js"></script>
+    <script src="js/vendor/retina.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider-min.js"></script>
-    <script src="bower_components/classie/classie.js"></script>
-    <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="js/vendor/classie.js"></script>
+    <script src="js/vendor/jquery.waypoints.min.js"></script>
     <script src="js/vendor/parallax.min.js"></script>
     <script>
-        (function() {
-            // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
-            if (!String.prototype.trim) {
-                (function() {
-                    // Make sure we trim BOM and NBSP
-                    var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
-                    String.prototype.trim = function() {
-                        return this.replace(rtrim, '');
-                    };
-                })();
-            }
-
-            [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
-                // in case the input is already filled..
-                if( inputEl.value.trim() !== '' ) {
-                    classie.add( inputEl.parentNode, 'input--filled' );
+            (function() {
+                // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+                if (!String.prototype.trim) {
+                    (function() {
+                        // Make sure we trim BOM and NBSP
+                        var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+                        String.prototype.trim = function() {
+                            return this.replace(rtrim, '');
+                        };
+                    })();
                 }
 
-                // events:
-                inputEl.addEventListener( 'focus', onInputFocus );
-                inputEl.addEventListener( 'blur', onInputBlur );
-            } );
+                [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+                    // in case the input is already filled..
+                    if( inputEl.value.trim() !== '' ) {
+                        classie.add( inputEl.parentNode, 'input--filled' );
+                    }
 
-            function onInputFocus( ev ) {
-                classie.add( ev.target.parentNode, 'input--filled' );
-            }
+                    // events:
+                    inputEl.addEventListener( 'focus', onInputFocus );
+                    inputEl.addEventListener( 'blur', onInputBlur );
+                } );
 
-            function onInputBlur( ev ) {
-                if( ev.target.value.trim() === '' ) {
-                    classie.remove( ev.target.parentNode, 'input--filled' );
+                function onInputFocus( ev ) {
+                    classie.add( ev.target.parentNode, 'input--filled' );
                 }
-            }
-        })();
-    </script>
+
+                function onInputBlur( ev ) {
+                    if( ev.target.value.trim() === '' ) {
+                        classie.remove( ev.target.parentNode, 'input--filled' );
+                    }
+                }
+            })();
+        </script>
 </body>
 </html>
