@@ -4,9 +4,13 @@ public class GrupoTutor {
 	private int id_Tutor; //FK
 	private int id_Grupo; //FK
 	
-	GrupoTutor(int id_Tutor, int id_Grupo){
-		this.id_Tutor = id_Tutor;
-		this.id_Grupo = id_Grupo;
+//	public GrupoTutor(int id_Tutor, int id_Grupo){
+//		this.id_Tutor = id_Tutor;
+//		this.id_Grupo = id_Grupo;
+//	}
+	
+	public GrupoTutor(){
+		
 	}
 
 	public int getId_Tutor() {

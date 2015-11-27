@@ -45,14 +45,14 @@ public class Curso {
 		this.ubicacion = ubicacion;
 	}
 	
-	public int registrar_curso(Curso curso) {
+	public int registrar_curso() {
 		cx.con(); // Se abre la conexión
 		
 		// Se hace la consulta SQL
 		String com = "INSERT INTO CURSO (id_Curso, nombre, descripcion, ubicacion)" +
-						"VALUES (null, '" + curso.getNombre() + "', '" +
-									curso.getDescripcion() + "', '" +
-									curso.getUbicacion() + "')";
+						"VALUES (null, '" + this.getNombre() + "', '" +
+									this.getDescripcion() + "', '" +
+									this.getUbicacion() + "')";
 		
 		int res = cx.execQuery(com); // ejecuta consulta
 		

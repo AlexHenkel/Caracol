@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
+
 public class Conectar {
 	
 	private Connection con = null;
@@ -54,10 +56,22 @@ public class Conectar {
 			this.con();
 			res = this.consulta.executeUpdate(com);
 		} catch (Exception e) {
-			System.out.println("Error de Ejecución" + e.getMessage());
+			System.out.println("Error de Ejecución " + e.getMessage());
 		}
 		
 		return res;
 	}
+	
+	// Método para ejecutar SQL Select
+		public ResultSet getDatos(String com) {			
+			try {
+				this.con();
+				this.data = this.consulta.executeQuery(com);
+			} catch (Exception e) {
+				System.out.println("Error de la consulta " + e.getMessage());
+			}
+			
+			return data;
+		}
 
 }

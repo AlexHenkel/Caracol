@@ -7,21 +7,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import caracol.modelo.Curso;
+import caracol.modelo.Beneficiario;
 
 /**
- * Servlet implementation class cCurso
+ * Servlet implementation class cBeneficiario
  */
-@WebServlet("/cCurso")
-public class cCurso extends HttpServlet {
-	Curso curso = new Curso();
+@WebServlet("/cBeneficiario")
+public class cBeneficiario extends HttpServlet {
+	
+	Beneficiario beneficiario = new Beneficiario();
 	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public cCurso() {
+    public cBeneficiario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,10 +31,11 @@ public class cCurso extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		curso.setNombre(request.getParameter("courseName"));
-		curso.setDescripcion(request.getParameter("courseDescription"));
-		curso.setUbicacion(request.getParameter("courseUbication"));
-		curso.registrar_curso();
+		beneficiario.setNombre(request.getParameter("benefNombre"));
+		beneficiario.setTelefono(request.getParameter("benefTelefono"));
+		beneficiario.setEmail(request.getParameter("benefEmail"));
+		beneficiario.setDireccion(request.getParameter("benefDireccion"));
+		beneficiario.registrar_beneficiario();
 		response.sendRedirect("home.jsp");
 	}
 

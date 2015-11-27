@@ -7,12 +7,16 @@ public class Usuario extends Persona {
 	private String password;
 	private int permiso;
 
-	public Usuario(int id_Persona, String nombre, String telefono, String email, String direccion, int id_Usuario, int id_PersonaFK, String password, int permiso) {
-		super(id_Persona, nombre, telefono, email, direccion);
-		this.id_Usuario = id_Usuario;
-		this.id_PersonaFK = id_Persona;
-		this.password = password;
-		this.permiso = permiso;
+//	public Usuario(int id_Persona, String nombre, String telefono, String email, String direccion, int id_Usuario, int id_PersonaFK, String password, int permiso) {
+//		super(id_Persona, nombre, telefono, email, direccion);
+//		this.id_Usuario = id_Usuario;
+//		this.id_PersonaFK = id_Persona;
+//		this.password = password;
+//		this.permiso = permiso;
+//	}
+	
+	public Usuario() {
+		
 	}
 
 	public int getId_Usuario() {

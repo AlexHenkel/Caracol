@@ -1,6 +1,6 @@
 package caracol.modelo;
 
-public class Administrador {
+public class Administrador extends Usuario {
 	//Atributos
 	private int id_Administrador;	//PK
 	private int id_Usuario;			//FK

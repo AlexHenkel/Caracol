@@ -4,9 +4,13 @@ public class GrupoSocio {
 	private int id_Grupo; //FK
 	private int id_Socio; //FK
 	
-	void GroupSocio(int id_Grupo, int id_Socio){
-		this.id_Grupo = id_Grupo;
-		this.id_Socio = id_Socio;
+//	public GrupoSocio(int id_Grupo, int id_Socio){
+//		this.id_Grupo = id_Grupo;
+//		this.id_Socio = id_Socio;
+//	}
+	
+	public GrupoSocio(){
+		
 	}
 
 	public int getId_Grupo() {

@@ -1,6 +1,6 @@
 package caracol.modelo;
 
-public class Tutor {
+public class Tutor extends Usuario {
 
 	public Tutor() {
 		// TODO Auto-generated constructor stub

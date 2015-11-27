@@ -8,12 +8,18 @@ public class Persona {
 	protected String email;
 	protected String direccion;
 	
-	Persona(int id_Persona, String nombre, String telefono, String email, String direccion){
-		this.id_Persona = id_Persona;
-		this.nombre = nombre;
-		this.telefono = telefono;
-		this.email = email;
-		this.direccion = direccion;
+	Conectar cx = new Conectar();
+	
+//	public Persona(int id_Persona, String nombre, String telefono, String email, String direccion){
+//		this.id_Persona = id_Persona;
+//		this.nombre = nombre;
+//		this.telefono = telefono;
+//		this.email = email;
+//		this.direccion = direccion;
+//	}
+	
+	public Persona(){
+		
 	}
 
 	public int getId_Persona() {
@@ -54,6 +60,27 @@ public class Persona {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+	
+	public int registrar_persona() {
+		cx.con(); // Se abre la conexión
+		
+		System.out.println("Entra persona");
+		
+		// Se hace la consulta SQL
+		String com = "INSERT INTO PERSONA (id_Persona, nombre, telefono, email, direccion)" +
+						"VALUES (null, '" + this.getNombre() + "', '" +
+									this.getTelefono() + "', '" +
+									this.getEmail() + "', '" +
+									this.getDireccion() + "')";
+		
+		int res = cx.execQuery(com); // ejecuta consulta
+		
+		System.out.println("sale persona");
+		
+		cx.desconectar();
+		
+		return res;
 	}
 
 }

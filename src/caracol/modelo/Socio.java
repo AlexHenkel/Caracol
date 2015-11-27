@@ -1,13 +1,17 @@
 package caracol.modelo;
 
-public class Socio {
+public class Socio extends Usuario{
 
 	private int id_Socio;
 	private int id_Usuario;
 	
-	public Socio(int id_Socio, int id_Usuario) {
-		this.id_Socio = id_Socio;
-		this.id_Usuario = id_Usuario;
+//	public Socio(int id_Socio, int id_Usuario) {
+//		this.id_Socio = id_Socio;
+//		this.id_Usuario = id_Usuario;
+//	}
+	
+	public Socio() {
+		
 	}
 
 	public int getId_Socio() {
