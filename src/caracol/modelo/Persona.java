@@ -64,9 +64,7 @@ public class Persona {
 	
 	public int registrar_persona() {
 		cx.con(); // Se abre la conexión
-		
-		System.out.println("Entra persona");
-		
+				
 		// Se hace la consulta SQL
 		String com = "INSERT INTO PERSONA (id_Persona, nombre, telefono, email, direccion)" +
 						"VALUES (null, '" + this.getNombre() + "', '" +
@@ -75,11 +73,16 @@ public class Persona {
 									this.getDireccion() + "')";
 		
 		int res = cx.execQuery(com); // ejecuta consulta
-		
-		System.out.println("sale persona");
-		
+				
 		cx.desconectar();
 		
+		return res;
+	}
+	
+	public int eliminar_persona() {
+		cx.con();
+		String com = "DELETE FROM Persona WHERE id_Persona='" + this.getId_Persona() + "'";
+		int res = cx.execQuery(com);
 		return res;
 	}
 

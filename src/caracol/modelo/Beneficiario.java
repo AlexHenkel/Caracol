@@ -3,8 +3,6 @@ package caracol.modelo;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
 public class Beneficiario extends Persona{
 	//Atributos
 	private int id_Beneficiario;	//PK
@@ -50,11 +48,10 @@ public class Beneficiario extends Persona{
 				index = rSet.getShort(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Error de Ejecución " + e.getMessage());
 		}
 		
-		// Se hace la consulta SQL
+		// Se hace la consulta SQL del beneficiario
 		String com = "INSERT INTO BENEFICIARIO (id_Beneficiario, id_Persona) " +
 						"VALUES (null, " + index +")";
 		
@@ -72,13 +69,27 @@ public class Beneficiario extends Persona{
 		return res;
 	}
 	
-	public int borrar_beneficiario(Curso curso) {
-		int res = 0;
+	public int eliminar_beneficiario() {
+		cx.con();
+		
+		// Hacer delete de beneficiario
+		String com = "DELETE FROM BENEFICIARIO WHERE id_Beneficiario='" + this.getId_Beneficiario() + "'"; 
+		
+		int res = cx.execQuery(com);
+		
+		if (res == 1) {
+			res = this.eliminar_persona();
+		}
+				
 		return res;
 	}
 	
 	public ResultSet listar_beneficiario() {
-		String com = "SELECT * FROM Persona ORDER BY nombre";
+		String com = "SELECT t1.id_Persona, nombre, telefono, email, direccion, id_Beneficiario " +
+						"FROM Persona AS t1 " +
+						"INNER JOIN Beneficiario AS t2 " +
+						"ON t1.id_Persona = t2.id_Persona " +
+						"ORDER BY nombre";
 		
 		ResultSet rs = cx.getDatos(com);
 		

@@ -21,11 +21,11 @@
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <section class="hero not-title">
+    <section class="not-title">
         <section class="navigation fixed">
             <header>
                 <div class="header-content">
-                    <div class="logo"><a href="index.php"><img src="img/logo.png" alt="Sedna logo"></a></div>
+                    <div class="logo"><a href="home.jsp"><img src="img/logo.png" alt="Sedna logo"></a></div>
                     <div class="header-nav">
                         <nav>
                             <ul class="member-actions">
@@ -53,7 +53,7 @@
                     <form class="signup-form" action="cBeneficiario" method="POST" role="form">
                         <div class="form-hidden">
                             <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="benefNombre" name="benefNombre" />
+                                <input class="input__field input__field--fumi" type="text" id="benefNombre" name="benefNombre" required/>
                                 <label class="input__label input__label--fumi" for="benefNombre">
                                     <i class="fa fa-fw fa-user icon icon--fumi"></i>
                                     <span class="input__label-content input__label-content--fumi">Nombre Completo</span>
@@ -97,26 +97,6 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="footer-links">
-                        <ul class="footer-group">
-                            <li><a href="#assets">Misión</a></li>
-                            <li><a href="#cursos">Cursos</a></li>
-                            <li><a href="#testimonios">Testimonios</a></li>
-                        </ul>
-                        <p>Copyright © 2015 <a href="#">Alejandro Henkel</a><br>
-                    </div>
-                </div>
-                <div class="social-share">
-                    <p>Síguenos en Redes Sociales</p>
-                    <a href="https://twitter.com/" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
     <script src="js/vendor/retina.js"></script>
@@ -161,6 +141,6 @@
                     }
                 }
             })();
-        </script>
+    </script>
 </body>
 </html>

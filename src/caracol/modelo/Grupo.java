@@ -6,10 +6,13 @@ public class Grupo {
 	//Atributos
 	private int id_Grupo;		//PK
 	private int id_Curso;		//FK
-	private int cupo;
+	private int cupo_benficiarios;
+	private int cupo_alumnos_tec;
 	private Date fecha_inicio;
 	private Date fecha_final;
 	private int num_grupo;
+	private int horario_benficiarios;
+	private int horario_alumnos_tec;
 	
 	public Grupo() {
 		// TODO Auto-generated constructor stub
@@ -31,12 +34,20 @@ public class Grupo {
 		this.id_Curso = id_Curso;
 	}
 
-	public int getCupo() {
-		return cupo;
+	public int getCupo_benficiarios() {
+		return cupo_benficiarios;
 	}
 
-	public void setCupo(int cupo) {
-		this.cupo = cupo;
+	public void setCupo_benficiarios(int cupo_benficiarios) {
+		this.cupo_benficiarios = cupo_benficiarios;
+	}
+
+	public int getCupo_alumnos_tec() {
+		return cupo_alumnos_tec;
+	}
+
+	public void setCupo_alumnos_tec(int cupo_alumnos_tec) {
+		this.cupo_alumnos_tec = cupo_alumnos_tec;
 	}
 
 	public Date getFecha_inicio() {
@@ -62,5 +73,23 @@ public class Grupo {
 	public void setNum_grupo(int num_grupo) {
 		this.num_grupo = num_grupo;
 	}
+
+	public int getHorario_benficiarios() {
+		return horario_benficiarios;
+	}
+
+	public void setHorario_benficiarios(int horario_benficiarios) {
+		this.horario_benficiarios = horario_benficiarios;
+	}
+
+	public int getHorario_alumnos_tec() {
+		return horario_alumnos_tec;
+	}
+
+	public void setHorario_alumnos_tec(int horario_alumnos_tec) {
+		this.horario_alumnos_tec = horario_alumnos_tec;
+	}
+
+	
 
 }

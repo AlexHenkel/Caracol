@@ -1,5 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String mensaje = "";
+    int msj = 0;
+    if (request.getParameter("msj") != null) {
+        msj = Integer.valueOf(request.getParameter("msj"));
+    }
+    else {
+        msj = 0;
+    }
+
+    switch (msj) {
+        case 1:
+            mensaje = "Se ha eliminado correctamente";
+            break;
+        case 2:
+            mensaje = "Hubo un problema al eliminar, contacte al administrador";
+            break;
+        case 3:
+            mensaje = "Se ha actualizado correctamente";
+            break;
+        case 4:
+            mensaje = "Hubo un problema al actualizar, contacte al administrador";
+            break;
+        case 5:
+            mensaje = "Se ha registrado correctamente";
+            break;
+        case 6:
+            mensaje = "Hubo un problema al registrar, contacte al administrador";
+            break;
+    }
+%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -21,11 +52,11 @@
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <section class="hero not-title">
+    <section class="not-title">
         <section class="navigation fixed">
             <header>
                 <div class="header-content">
-                    <div class="logo"><a href="index.php"><img src="img/logo.png" alt="Sedna logo"></a></div>
+                    <div class="logo"><a href="home.jsp"><img src="img/logo.png" alt="Sedna logo"></a></div>
                     <div class="header-nav">
                         <nav>
                             <ul class="member-actions">
@@ -50,6 +81,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="dashboard-title">Lista de alumnos</h2>
+                    <label for="" style="color: red"><%=mensaje %></label>
                     <div class="main">
                         <ul>
 							<jsp:include page="listBeneficiario.jsp" flush="true" />
@@ -69,26 +101,6 @@
             </div>
         </div>
     </section>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-7">
-                    <div class="footer-links">
-                        <ul class="footer-group">
-                            <li><a href="#assets">Misión</a></li>
-                            <li><a href="#cursos">Cursos</a></li>
-                            <li><a href="#testimonios">Testimonios</a></li>
-                        </ul>
-                        <p>Copyright © 2015 <a href="#">Alejandro Henkel</a><br>
-                    </div>
-                </div>
-                <div class="social-share">
-                    <p>Síguenos en Redes Sociales</p>
-                    <a href="https://twitter.com/" class="twitter-share"><i class="fa fa-twitter"></i></a> <a href="#" class="facebook-share"><i class="fa fa-facebook"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
 
 	<jsp:include page="listBeneficiarioModal.jsp" flush="true" />
     

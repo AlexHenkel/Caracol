@@ -30,19 +30,19 @@ public class cCurso extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		curso.setNombre(request.getParameter("courseName"));
-		curso.setDescripcion(request.getParameter("courseDescription"));
-		curso.setUbicacion(request.getParameter("courseUbication"));
-		curso.registrar_curso();
-		response.sendRedirect("home.jsp");
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		curso.setNombre(request.getParameter("courseName"));
+		curso.setDescripcion(request.getParameter("courseDescription"));
+		curso.setIncubadora_social(request.getParameter("courseIncubadora"));
+		curso.setEspacio_formativo(request.getParameter("courseEspacio"));
+		curso.registrar_curso();
+		response.sendRedirect("home.jsp");
 	}
 
 }

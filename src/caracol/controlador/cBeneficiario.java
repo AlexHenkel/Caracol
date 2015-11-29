@@ -18,6 +18,8 @@ public class cBeneficiario extends HttpServlet {
 	Beneficiario beneficiario = new Beneficiario();
 	
 	private static final long serialVersionUID = 1L;
+	
+	String msj = "";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,20 +33,49 @@ public class cBeneficiario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		beneficiario.setNombre(request.getParameter("benefNombre"));
-		beneficiario.setTelefono(request.getParameter("benefTelefono"));
-		beneficiario.setEmail(request.getParameter("benefEmail"));
-		beneficiario.setDireccion(request.getParameter("benefDireccion"));
-		beneficiario.registrar_beneficiario();
-		response.sendRedirect("home.jsp");
+		String opc = request.getParameter("op");
+		switch (opc) {
+		case "del": eliminar_Beneficiario(request, response);
+			
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String nombre = request.getParameter("benefNombre");
+	    String telefono = request.getParameter("benefTelefono");
+	    String email = request.getParameter("benefEmail");
+	    String direccion = request.getParameter("benefDireccion");
+	    
+		beneficiario.setNombre(nombre);
+		beneficiario.setTelefono(telefono);
+		beneficiario.setEmail(email);
+		beneficiario.setDireccion(direccion);
+
+		beneficiario.registrar_beneficiario();
+
+		response.sendRedirect("home.jsp");
+	}
+	
+	protected void eliminar_Beneficiario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		beneficiario.setId_Beneficiario(Integer.valueOf(request.getParameter("idBen")));
+		beneficiario.setId_Persona(Integer.valueOf(request.getParameter("idPer")));
+		int valor = beneficiario.eliminar_beneficiario();
+		
+		if (valor == 1) {
+			msj = "1"; // una eliminacion satisfactoria
+		}
+		else {
+			msj = "2"; // error en la eliminacion
+		}
+		
+		response.sendRedirect("benef_list.jsp?msj=" + msj);
 	}
 
 }
