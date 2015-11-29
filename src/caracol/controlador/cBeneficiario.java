@@ -88,29 +88,43 @@ public class cBeneficiario extends HttpServlet {
 		beneficiario.setEmail(email);
 		beneficiario.setDireccion(direccion);
 
-		beneficiario.registrar_beneficiario();
+		int valor = beneficiario.registrar_beneficiario();
 
-		response.sendRedirect("home.jsp");
+		if (valor == 1) {
+			msj = "1"; // una eliminacion satisfactoria
+		}
+		else {
+			msj = "2"; // error en la eliminacion
+		}
+
+		response.sendRedirect("home.jsp?msj=" + msj);
 	}
 
 	protected void actualizar_Beneficiario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    beneficiario.setId_Persona(Short.valueOf(request.getParameter("idPer")));
-		beneficiario.setNombre(request.getParameter("benefNombre"));
-		beneficiario.setTelefono(request.getParameter("benefTelefono"));
-		beneficiario.setEmail(request.getParameter("benefEmail"));
-		beneficiario.setDireccion(request.getParameter("benefDireccion"));
-		
-		String msj = "";
+	    String nombre = request.getParameter("benefNombre");
 
-		int v = beneficiario.actualizar_beneficiario();
-		
-		if (v == 1) {
-			msj = "3";
-		}
-		else {
-			msj = "4";
-		}
-		
+	    String msj = "";
+	    
+	    if (nombre == null || nombre.trim().isEmpty()) {
+	    	msj = "4";
+	    }
+
+	    else {
+	    	beneficiario.setId_Persona(Short.valueOf(request.getParameter("idPer")));
+			beneficiario.setNombre(request.getParameter("benefNombre"));
+			beneficiario.setTelefono(request.getParameter("benefTelefono"));
+			beneficiario.setEmail(request.getParameter("benefEmail"));
+			beneficiario.setDireccion(request.getParameter("benefDireccion"));
+
+			int v = beneficiario.actualizar_beneficiario();
+			
+			if (v == 1) {
+				msj = "3";
+			}
+			else {
+				msj = "4";
+			}
+	    }
 
 		response.sendRedirect("benef_list.jsp?msj=" + msj);
 	}

@@ -1,5 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+    String mensaje = "";
+    int msj = 0;
+    if (request.getParameter("msj") != null) {
+        msj = Integer.valueOf(request.getParameter("msj"));
+    }
+    else {
+        msj = 0;
+    }
+
+    switch (msj) {
+        case 1:
+            mensaje = "Se ha eliminado correctamente";
+            break;
+        case 2:
+            mensaje = "Hubo un problema al eliminar, contacte al administrador";
+            break;
+        case 3:
+            mensaje = "Se ha actualizado correctamente";
+            break;
+        case 4:
+            mensaje = "Hubo un problema al actualizar, contacte al administrador";
+            break;
+        case 5:
+            mensaje = "Se ha registrado correctamente";
+            break;
+        case 6:
+            mensaje = "Hubo un problema al registrar, contacte al administrador";
+            break;
+    }
+%>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -50,6 +81,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="dashboard-title">Dashboard</h2>
+                    <label for="" style="color: red"><%=mensaje %></label>
                     <div class="main">
                         <ul class="cbp-ig-grid">
                             <li>

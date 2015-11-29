@@ -7,6 +7,8 @@ public class Usuario extends Persona {
 	private String password;
 	private int permiso;
 
+	Conectar cx = new Conectar();
+
 //	public Usuario(int id_Persona, String nombre, String telefono, String email, String direccion, int id_Usuario, int id_PersonaFK, String password, int permiso) {
 //		super(id_Persona, nombre, telefono, email, direccion);
 //		this.id_Usuario = id_Usuario;
@@ -49,5 +51,20 @@ public class Usuario extends Persona {
 
 	public void setPermiso(int permiso) {
 		this.permiso = permiso;
+	}
+
+	public int validarUsuario () {
+		cx.con();
+		
+		String com = "SELECT t1.id_Persona, nombre, telefono, email, direccion, id_Usuario, password, permiso " +
+				"FROM Persona AS t1 " +
+				"INNER JOIN Usuario AS t2 " +
+				"ON t1.id_Persona = t2.id_Persona " +
+				"WHERE email='" + this.getEmail() + "' " +
+				"AND password='" + this.getPassword() + "'";
+		
+		int res = cx.contarFilas(com);
+		cx.desconectar();
+		return res;
 	}
 }

@@ -66,7 +66,7 @@
 		          	<span class="<%if(opc!="") {%>hidden<%}%>"><%= rs.getString("telefono") %></span>
 		        </li>
 		        <li>
-		          	<b>Correo Electrónico</b>
+		          	<b>Correo Electrónico:</b>
 		          	<span class="<%if(opc!="") {%>hidden<%}%>"><%= rs.getString("email") %></span>
 		        </li>
 		    </ul>

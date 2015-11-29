@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
-
 public class Conectar {
 	
 	private Connection con = null;
@@ -71,6 +69,23 @@ public class Conectar {
 			}
 			
 			return data;
+		}
+		
+		// Método para contar numero de filas o registros encontrados
+		public int contarFilas(String com) {
+			try {
+				this.con();
+				this.data = this.consulta.executeQuery(com);
+				int contador = 0;
+				while (data.next()) {
+					contador++;
+				}
+				return contador;
+			} catch (Exception e) {
+				System.out.println("Error al contar registros: " + e.getMessage());
+				System.out.println(com);
+				return 0;
+			}
 		}
 
 }
