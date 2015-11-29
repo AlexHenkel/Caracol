@@ -1,5 +1,8 @@
+<%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<jsp:useBean id="benef" class="caracol.modelo.Beneficiario" scope="request" />
+<jsp:useBean id="cx" class="caracol.modelo.Conectar" scope="page" />
 <%
     String mensaje = "";
     int msj = 0;
@@ -30,7 +33,47 @@
             mensaje = "Hubo un problema al registrar, contacte al administrador";
             break;
     }
+
+    String opc = request.getParameter("op");
+
+    String nombre = "";
+    String direccion = "";
+    String telefono = "";
+    String email = "";
+
+    int idBen;
+    int idPer;
+
+    if (opc == null) {
+        opc = "";
+    }
+    if (request.getParameter("idBen") == null) {
+        idBen = 0;
+    }
+    else {
+        idBen = Integer.valueOf(request.getParameter("idBen"));
+    }
+    if (request.getParameter("idPer") == null) {
+        idPer = 0;
+    }
+    else {
+        idPer = Integer.valueOf(request.getParameter("idPer")); 
+    }
+
+    benef.setId_Beneficiario(idBen);
+    benef.setId_Persona(idPer);
+
+    ResultSet rsp = benef.buscar_beneficiario();
+
+    while (rsp.next()) {
+        nombre = rsp.getString("nombre");
+        direccion = rsp.getString("direccion");
+        telefono = rsp.getString("telefono");
+        email = rsp.getString("email");
+    }
+
 %>
+
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -53,7 +96,7 @@
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <section class="not-title">
-        <section class="navigation fixed">
+        <section class="navigation not-fixed">
             <header>
                 <div class="header-content">
                     <div class="logo"><a href="home.jsp"><img src="img/logo.png" alt="Sedna logo"></a></div>
@@ -76,7 +119,7 @@
             </header>
         </section>
     </section>
-    <section class="sign-up section-padding" id="download">
+    <section class="sign-up section-padding page-content" id="download">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
@@ -84,10 +127,9 @@
                     <label for="" style="color: red"><%=mensaje %></label>
                     <div class="main">
                         <ul>
-							<jsp:include page="listBeneficiario.jsp" flush="true" />
+                            <jsp:include page="listBeneficiario.jsp" flush="true" />
                         </ul>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -102,17 +144,30 @@
         </div>
     </section>
 
-	<jsp:include page="listBeneficiarioModal.jsp" flush="true" />
+    <jsp:include page="listBeneficiarioModal.jsp" flush="true" />
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="bower_components/retina.js/dist/retina.js"></script>
+    <script src="js/vendor/retina.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/jquery.flexslider-min.js"></script>
-    <script src="bower_components/classie/classie.js"></script>
-    <script src="bower_components/jquery-waypoints/lib/jquery.waypoints.min.js"></script>
+    <script src="js/vendor/classie.js"></script>
+    <script src="js/vendor/jquery.waypoints.min.js"></script>
     <script src="js/vendor/parallax.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var url = String(location);
+            var edit = url.indexOf("op=up");
+            if (edit != -1) {
+            	$('.modal-persona-0').modal('show');
+            }
+            $('.modal-persona-0').on('hidden.bs.modal', function (e) {
+              // do something...
+              $( "#benef-edit-form" ).submit();
+            })
+        });
+    </script>
 </body>
 </html>

@@ -30,7 +30,6 @@ public class Conectar {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://" + this.server + "/" + this.BD;
 			this.con = DriverManager.getConnection(url, userDB, passDB);
-			System.out.println("Conexión exitosa");
 			this.consulta = con.createStatement();
 		} catch (Exception e) {
 			System.out.println("Error de Conexión: " + e.getMessage());

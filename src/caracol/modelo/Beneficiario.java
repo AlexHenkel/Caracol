@@ -56,17 +56,36 @@ public class Beneficiario extends Persona{
 						"VALUES (null, " + index +")";
 		
 		int res = cx.execQuery(com); // ejecuta consulta
-		
-		System.out.println("sale benef");
-		
+				
 		cx.desconectar();
 		
 		return res;
 	}
 
-	public int actualizar_beneficiario(Curso curso) {
-		int res = 0;
+	public int actualizar_beneficiario() {
+		cx.con();
+		String com = "UPDATE Persona SET " +
+						"nombre='" + this.getNombre() + "'," +
+						"telefono='" + this.getTelefono() + "'," +
+						"direccion='" + this.getDireccion() + "'," +
+						"email='" + this.getEmail() + "' " +
+						"WHERE id_Persona='" + this.getId_Persona() + "'";
+		int res = cx.execQuery(com);
+		cx.desconectar();
 		return res;
+	}
+
+	public ResultSet buscar_beneficiario() {
+		String com = "SELECT t1.id_Persona, nombre, telefono, email, direccion, id_Beneficiario " +
+						"FROM Persona AS t1 " +
+						"INNER JOIN Beneficiario AS t2 " +
+						"ON t1.id_Persona = t2.id_Persona " +
+						"WHERE id_Beneficiario='" + this.getId_Beneficiario() + "' " +
+						"ORDER BY nombre";
+		
+		ResultSet rs = cx.getDatos(com);
+		
+		return rs;
 	}
 	
 	public int eliminar_beneficiario() {
@@ -80,6 +99,8 @@ public class Beneficiario extends Persona{
 		if (res == 1) {
 			res = this.eliminar_persona();
 		}
+
+		cx.desconectar();
 				
 		return res;
 	}

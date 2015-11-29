@@ -48,19 +48,18 @@ public class cBeneficiario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("benefNombre");
-	    String telefono = request.getParameter("benefTelefono");
-	    String email = request.getParameter("benefEmail");
-	    String direccion = request.getParameter("benefDireccion");
-	    
-		beneficiario.setNombre(nombre);
-		beneficiario.setTelefono(telefono);
-		beneficiario.setEmail(email);
-		beneficiario.setDireccion(direccion);
+		String opc = request.getParameter("op");
+		switch (opc) {
+		case "in": 
+			registrar_Beneficiario(request, response);
+			break;
+		case "up": 
+			actualizar_Beneficiario(request, response);
+			break;
 
-		beneficiario.registrar_beneficiario();
-
-		response.sendRedirect("home.jsp");
+		default:
+			break;
+		}
 	}
 	
 	protected void eliminar_Beneficiario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -75,6 +74,44 @@ public class cBeneficiario extends HttpServlet {
 			msj = "2"; // error en la eliminacion
 		}
 		
+		response.sendRedirect("benef_list.jsp?msj=" + msj);
+	}
+
+	protected void registrar_Beneficiario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nombre = request.getParameter("benefNombre");
+	    String telefono = request.getParameter("benefTelefono");
+	    String email = request.getParameter("benefEmail");
+	    String direccion = request.getParameter("benefDireccion");
+	    
+		beneficiario.setNombre(nombre);
+		beneficiario.setTelefono(telefono);
+		beneficiario.setEmail(email);
+		beneficiario.setDireccion(direccion);
+
+		beneficiario.registrar_beneficiario();
+
+		response.sendRedirect("home.jsp");
+	}
+
+	protected void actualizar_Beneficiario(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    beneficiario.setId_Persona(Short.valueOf(request.getParameter("idPer")));
+		beneficiario.setNombre(request.getParameter("benefNombre"));
+		beneficiario.setTelefono(request.getParameter("benefTelefono"));
+		beneficiario.setEmail(request.getParameter("benefEmail"));
+		beneficiario.setDireccion(request.getParameter("benefDireccion"));
+		
+		String msj = "";
+
+		int v = beneficiario.actualizar_beneficiario();
+		
+		if (v == 1) {
+			msj = "3";
+		}
+		else {
+			msj = "4";
+		}
+		
+
 		response.sendRedirect("benef_list.jsp?msj=" + msj);
 	}
 

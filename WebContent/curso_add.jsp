@@ -77,7 +77,7 @@
             </header>
         </section>
     </section>
-    <section class="sign-up section-padding text-center" id="download">
+    <section class="sign-up section-padding text-center page-content" id="download">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">

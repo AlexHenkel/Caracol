@@ -45,7 +45,7 @@
             </header>
         </section>
     </section>
-    <section class="sign-up section-padding text-center" id="download">
+    <section class="sign-up section-padding text-center page-content" id="download">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
@@ -80,7 +80,8 @@
                                     <span class="input__label-content input__label-content--fumi">Correo electrónico</span>
                                 </label>
                             </span>
-                            <button type="submit" class="btn-fill sign-up-btn" name="register" value="Register">Registrar</button>
+                            <input type="hidden" name="op" value="in">
+                            <input type="submit" class="btn-fill sign-up-btn" name="register" value="Registrar">
                         </div>
                     </form>
 
