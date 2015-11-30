@@ -166,7 +166,8 @@
                                 <span class="input__label-content input__label-content--fumi">Ingresa tu contraseña</span>
                             </label>
                         </span>
-                        <button type="submit" name="opc" class="btn-fill sign-up-btn">Acceder</button>
+                        <input type="hidden" name="op" value="re">
+                        <input type="submit" class="btn-fill sign-up-btn" name="register" value="Registrar">
                     </form>
                 </div>
             </div>

@@ -82,13 +82,20 @@ public class cCodigo extends HttpServlet {
 		codigo.setCodigo(request.getParameter("codigo"));
 		codigo.setPermiso(request.getParameter("permiso"));
 				
-		int valor = codigo.registrar_codigo();
+		int unico = codigo.validarCodigo();
 		
-		if (valor == 1) {
-			msj = "5"; // una agregación satisfactoria
+		if (unico == 0) {
+			int valor = codigo.registrar_codigo();
+			
+			if (valor == 1) {
+				msj = "5"; // una agregación satisfactoria
+			}
+			else {
+				msj = "6"; // error en la agregacion
+			}
 		}
 		else {
-			msj = "6"; // error en la agregacion
+			msj = "7"; // Ya existe
 		}
 
 		response.sendRedirect("codigo_list.jsp?msj=" + msj);
