@@ -8,8 +8,7 @@ public class Grupo {
 	private int id_Curso;		//FK
 	private int cupo_benficiarios;
 	private int cupo_alumnos_tec;
-	private Date fecha_inicio;
-	private Date fecha_final;
+	private int id_Periodo;  // FK
 	private int num_grupo;
 	private int horario_benficiarios;
 	private int horario_alumnos_tec;
@@ -50,20 +49,12 @@ public class Grupo {
 		this.cupo_alumnos_tec = cupo_alumnos_tec;
 	}
 
-	public Date getFecha_inicio() {
-		return fecha_inicio;
+	public int getId_Periodo() {
+		return id_Periodo;
 	}
 
-	public void setFecha_inicio(Date fecha_inicio) {
-		this.fecha_inicio = fecha_inicio;
-	}
-
-	public Date getFecha_final() {
-		return fecha_final;
-	}
-
-	public void setFecha_final(Date fecha_final) {
-		this.fecha_final = fecha_final;
+	public void setId_Periodo(int id_Periodo) {
+		this.id_Periodo = id_Periodo;
 	}
 
 	public int getNum_grupo() {

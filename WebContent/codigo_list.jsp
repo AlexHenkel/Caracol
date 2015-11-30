@@ -96,7 +96,7 @@
                             <span class="input input--fumi">
                                 <input class="input__field input__field--fumi" type="text" id="codigo" name="codigo" required/>
                                 <label class="input__label input__label--fumi" for="courseName">
-                                    <i class="fa fa-fw fa-user icon icon--fumi"></i>
+                                    <i class="fa fa-fw fa-key icon icon--fumi"></i>
                                     <span class="input__label-content input__label-content--fumi">Código</span>
                                 </label>
                             </span>
