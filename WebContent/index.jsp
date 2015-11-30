@@ -9,6 +9,9 @@
         if (msj.equals("v")) {
             msj = "Datos incorrectos. Vuelve a intentar";        
         }
+        else if (msj.equals("m")) {
+            msj = "Es obligatorio identificarse";
+        }
         else {
             msj = "Acceso solo a personas autorizadas";
         }
@@ -30,6 +33,7 @@
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="js/md5.js"></script>
 </head>
 <body id="top">
     <!--[if lt IE 8]>
@@ -155,7 +159,8 @@
                             </label>
                         </span>
                         <span class="input input--fumi">
-                            <input class="input__field input__field--fumi" type="password" size="20" id="lPass" name="lPass" required />
+                            <input class="input__field input__field--fumi" type="password" size="20" id="lPass" name="lPass" required onkeyup="this.form.lPasse.value=md5(this.form.lPass.value)"/>
+                            <input type="hidden" name="lPasse">
                             <label class="input__label input__label--fumi" for="lPass">
                                 <i class="fa fa-fw fa-unlock-alt icon icon--fumi"></i>
                                 <span class="input__label-content input__label-content--fumi">Ingresa tu contraseña</span>

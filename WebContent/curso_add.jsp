@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="seguridad.jsp" %>
 <%
     String mensaje = "";
     int msj;
@@ -67,6 +68,10 @@
                                         Mauro Amarante
                                     </a>
                                 </li>
+                                <br class="hidden-xs">
+                                <li>
+                                    <a class="cerrar-sesion" href="cerrarsesion.jsp">Cerrar Sesión</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -105,6 +110,14 @@
                                     <span class="input__label-content input__label-content--fumi">Descripción</span>
                                 </label>
                             </span>
+                            <div class="material">
+                                <select name="mySelect" placeholder="Select one of these">
+                                    <option value="1">Option</option>
+                                    <option value="2">Super option</option>
+                                    <option value="3" selected>Awesome option</option>
+                                    <option value="4">WORST option ever</option>
+                            </select>
+                            </div>
                             <span class="input input--fumi">
                                 <input class="input__field input__field--fumi" type="text" id="courseIncubadora" name="courseUbication" required/>
                                 <label class="input__label input__label--fumi" for="courseUbication">
@@ -153,6 +166,7 @@
     <script src="js/vendor/classie.js"></script>
     <script src="js/vendor/jquery.waypoints.min.js"></script>
     <script src="js/vendor/parallax.min.js"></script>
+    <script type="text/javascript" src="js/vendor/jquery.material.form.min.js"></script>
     <script>
 			(function() {
 				// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -187,6 +201,9 @@
 					}
 				}
 			})();
+            $(function(){
+                $('.material').materialForm(); // Apply material
+            });
 		</script>
 </body>
 </html>

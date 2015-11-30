@@ -10,14 +10,6 @@ public class Persona {
 	
 	Conectar cx = new Conectar();
 	
-//	public Persona(int id_Persona, String nombre, String telefono, String email, String direccion){
-//		this.id_Persona = id_Persona;
-//		this.nombre = nombre;
-//		this.telefono = telefono;
-//		this.email = email;
-//		this.direccion = direccion;
-//	}
-	
 	public Persona(){
 		
 	}

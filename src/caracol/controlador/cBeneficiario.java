@@ -91,10 +91,10 @@ public class cBeneficiario extends HttpServlet {
 		int valor = beneficiario.registrar_beneficiario();
 
 		if (valor == 1) {
-			msj = "1"; // una eliminacion satisfactoria
+			msj = "5"; // una eliminacion satisfactoria
 		}
 		else {
-			msj = "2"; // error en la eliminacion
+			msj = "6"; // error en la eliminacion
 		}
 
 		response.sendRedirect("home.jsp?msj=" + msj);

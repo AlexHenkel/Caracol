@@ -1,6 +1,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="seguridad.jsp" %>
 <jsp:useBean id="benef" class="caracol.modelo.Beneficiario" scope="request" />
 <jsp:useBean id="cx" class="caracol.modelo.Conectar" scope="page" />
 <%
@@ -109,6 +110,10 @@
                                         Mauro Amarante
                                     </a>
                                 </li>
+                                <br class="hidden-xs">
+                                <li>
+                                    <a class="cerrar-sesion" href="cerrarsesion.jsp">Cerrar Sesión</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -124,7 +129,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="dashboard-title">Lista de alumnos</h2>
-                    <label for="" style="color: red"><%=mensaje %></label>
+                    <label for="" style="color: <% if(msj == 1 || msj == 3 || msj == 5) {%>green<%}else{%>red<%}%>"><%=mensaje %></label>
                     <div class="main">
                         <ul>
                             <jsp:include page="listBeneficiario.jsp" flush="true" />

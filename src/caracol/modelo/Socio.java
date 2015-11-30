@@ -1,14 +1,10 @@
 package caracol.modelo;
 
+import java.sql.ResultSet;
+
 public class Socio extends Usuario{
 
 	private int id_Socio;
-	private int id_Usuario;
-	
-//	public Socio(int id_Socio, int id_Usuario) {
-//		this.id_Socio = id_Socio;
-//		this.id_Usuario = id_Usuario;
-//	}
 	
 	public Socio() {
 		
@@ -22,14 +18,33 @@ public class Socio extends Usuario{
 		this.id_Socio = id_Socio;
 	}
 
-	public int getId_Usuario() {
-		return id_Usuario;
+	public Socio getSocio(Usuario u) {
+		cx.con();
+		
+		Socio socio = new Socio();
+		
+		String com = "SELECT * FROM Socio AS t1 " +
+						"INNER JOIN Usuario AS t2 " +
+								"ON t1.email = t2.email " +
+						"INNER JOIN Persona AS t3 " +
+								"ON t2.email = t3.email " +
+						"WHERE t1.email='" + u.getEmail() + "'";
+		try {
+			ResultSet rs = cx.getDatos(com);
+			while (rs.next()) {
+				socio.setId_Socio(rs.getShort("id_Socio"));
+				socio.setEmail(rs.getString(2));
+				socio.setPassword(rs.getString("password"));
+				socio.setPermiso(rs.getShort("permiso"));
+				socio.setId_Persona(rs.getShort("id_Persona"));
+				socio.setNombre(rs.getString("nombre"));
+				socio.setTelefono(rs.getString("telefono"));
+				socio.setDireccion(rs.getString("direccion"));
+			}
+			cx.desconectar();
+			return socio;
+		} catch (Exception e) {
+			return socio = null;
+		}
 	}
-
-	public void setId_Usuario(int id_Usuario) {
-		this.id_Usuario = id_Usuario;
-	}
-	
-	
-
 }

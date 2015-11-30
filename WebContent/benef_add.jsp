@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="seguridad.jsp" %>
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -34,6 +35,10 @@
                                         Bienvenido <br>
                                         Mauro Amarante
                                     </a>
+                                </li>
+                                <br class="hidden-xs">
+                                <li>
+                                    <a class="cerrar-sesion" href="cerrarsesion.jsp">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </nav>

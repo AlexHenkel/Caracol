@@ -5,6 +5,7 @@ public class Curso {
 	private int id_Curso;		//PK
 	private String nombre;
 	private String descripcion;
+	private String categoria;
 	private String incubadora_social;
 	private String espacio_formativo;
 
@@ -48,31 +49,29 @@ public class Curso {
 		this.descripcion = descripcion;
 	}
 
+	public String getCategoria() {
+		return categoria;
+	}
 
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
 
 	public String getIncubadora_social() {
 		return incubadora_social;
 	}
 
-
-
 	public void setIncubadora_social(String incubadora_social) {
 		this.incubadora_social = incubadora_social;
 	}
-
-
 
 	public String getEspacio_formativo() {
 		return espacio_formativo;
 	}
 
-
-
 	public void setEspacio_formativo(String espacio_formativo) {
 		this.espacio_formativo = espacio_formativo;
 	}
-
-
 
 	public int registrar_curso() {
 		cx.con(); // Se abre la conexión

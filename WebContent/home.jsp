@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" session="true"%>
+<%@ include file="seguridad.jsp" %>
 <%
     String mensaje = "";
     int msj = 0;
@@ -63,8 +64,12 @@
                                 <li>
                                     <a>
                                         Bienvenido <br>
-                                        Mauro Amarante
+                                        <%= sesionOK.getAttribute("nombre") %>
                                     </a>
+                                </li>
+                                <br class="hidden-xs">
+                                <li>
+                                    <a class="cerrar-sesion" href="cerrarsesion.jsp">Cerrar Sesión</a>
                                 </li>
                             </ul>
                         </nav>
@@ -81,7 +86,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="dashboard-title">Dashboard</h2>
-                    <label for="" style="color: red"><%=mensaje %></label>
+                    <label for="" style="color: <% if(msj == 1 || msj == 3 || msj == 5) {%>green<%}else{%>red<%}%>"><%=mensaje %></label>
                     <div class="main">
                         <ul class="cbp-ig-grid">
                             <li>
