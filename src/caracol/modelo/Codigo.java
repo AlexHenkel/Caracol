@@ -30,7 +30,6 @@ public class Codigo {
 						"VALUES ('" + this.getCodigo() + "', '" +
 									this.getPermiso() + "')";
 		
-		System.out.println(com);
 		int res = cx.execQuery(com); // ejecuta consulta
 		
 		cx.desconectar();

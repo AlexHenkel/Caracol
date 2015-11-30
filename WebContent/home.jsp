@@ -128,6 +128,12 @@
                                     <h3 class="cbp-ig-title">Tomar lista</h3>
                                 </a>
                             </li>
+                            <li>
+                                <a href="codigo_list.jsp">
+                                    <span class="cbp-ig-icon cbp-ig-icon-whippy"></span>
+                                    <h3 class="cbp-ig-title">Códigos de Acceso</h3>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
