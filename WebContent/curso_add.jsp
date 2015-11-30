@@ -65,7 +65,7 @@
                                 <li>
                                     <a>
                                         Bienvenido <br>
-                                        Mauro Amarante
+                                        <%= sesionOK.getAttribute("nombre") %>
                                     </a>
                                 </li>
                                 <br class="hidden-xs">
@@ -96,50 +96,41 @@
                                     <span class="input__label-content input__label-content--fumi">Nombre del curso</span>
                                 </label>
                             </span>
-                            <!-- <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="courseName" name="courseName" />
-                                <label class="input__label input__label--fumi" for="input-23">
-                                    <i class="fa fa-fw fa-location-arrow icon icon--fumi"></i>
-                                    <span class="input__label-content input__label-content--fumi">Categoría</span>
-                                </label>
-                            </span> -->
                             <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="courseDescription" name="courseDescription" />
+                                <input class="input__field input__field--fumi" type="text" id="courseDescription" name="courseDescription" required/>
                                 <label class="input__label input__label--fumi" for="courseDescription">
                                     <i class="fa fa-fw fa-envelope icon icon--fumi"></i>
                                     <span class="input__label-content input__label-content--fumi">Descripción</span>
                                 </label>
                             </span>
                             <div class="material">
-                                <select name="mySelect" placeholder="Select one of these">
-                                    <option value="1">Option</option>
-                                    <option value="2">Super option</option>
-                                    <option value="3" selected>Awesome option</option>
-                                    <option value="4">WORST option ever</option>
-                            </select>
+                                <select name="courseCategory" placeholder="Categoría">
+                                    <option value="1" selected>Educación</option>
+                                    <option value="2">Tecnología</option>
+                                    <option value="3">Emprendimiento</option>
+                                    <option value="4">Arte</option>
+                                    <option value="5">Desarrollo Humano</option>
+                                    <option value="6">Conciencia Cívica</option>
+                                    <option value="7">Ciencias</option>
+                                    <option value="8">Idiomas</option>
+                                </select>
                             </div>
                             <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="courseIncubadora" name="courseUbication" required/>
-                                <label class="input__label input__label--fumi" for="courseUbication">
+                                <input class="input__field input__field--fumi" type="text" id="courseIncubadora" name="courseIncubadora" required/>
+                                <label class="input__label input__label--fumi" for="courseIncubadora">
                                     <i class="fa fa-fw fa-home icon icon--fumi"></i>
                                     <span class="input__label-content input__label-content--fumi">Incubadora Social</span>
                                 </label>
                             </span>
                             <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="courseEspacio" name="courseUbication" required/>
-                                <label class="input__label input__label--fumi" for="courseUbication">
+                                <input class="input__field input__field--fumi" type="text" id="courseEspacio" name="courseEspacio" required/>
+                                <label class="input__label input__label--fumi" for="courseEspacio">
                                     <i class="fa fa-fw fa-map-marker icon icon--fumi"></i>
                                     <span class="input__label-content input__label-content--fumi">Espacio Formativo</span>
                                 </label>
                             </span>
-                            <!-- <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="input-23" />
-                                <label class="input__label input__label--fumi" for="input-23">
-                                    <i class="fa fa-fw fa-user icon icon--fumi"></i>
-                                    <span class="input__label-content input__label-content--fumi">Nombre del socio</span>
-                                </label>
-                            </span> -->
-                            <button type="submit" class="btn-fill sign-up-btn" name="register" value="Register">Registrar</button>
+                            <input type="hidden" name="op" value="in">
+                            <input type="submit" class="btn-fill sign-up-btn" name="register" value="Registrar">
                         </div>
                     </form>
 

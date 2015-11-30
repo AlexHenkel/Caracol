@@ -39,11 +39,11 @@
     <!--[if lt IE 8]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <section class="hero parallax-window">
+    <section class="hero" id="index-1-bg">
         <section class="navigation not-fixed">
             <header>
                 <div class="header-content">
-                    <div class="logo"><a href="index.php"><img src="img/logo.png" alt="Sedna logo"></a></div>
+                    <div class="logo"><a href="index.jsp"><img src="img/logo.png" alt="Sedna logo"></a></div>
                     <div class="header-nav">
                         <nav>
                             <ul class="primary-nav">
@@ -52,8 +52,8 @@
                                 <li><a href="#testimonios">Testimonios</a></li>
                             </ul>
                             <ul class="member-actions">
-                                <li><a href="#download" class="login btn-white btn-small">Acceder</a></li>
-                                <li><a href="registro.php" class="btn-small">Regístrate</a></li>
+                                <li><a href="#login" class="login btn-white btn-small">Acceder</a></li>
+                                <li><a href="registro.jsp" class="btn-small">Regístrate</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="hero-content text-center">
                         <img src="img/logo.png" alt="">
                         <p class="intro">Slogan grande de la incubadora caracol. Slogan grande de la incubadora caracol. Slogan grande de la incubadora.</p>
-                        <a href="#cursos" class="btn btn-fill btn-large btn-margin-right">Cursos</a> 
+                        <a href="#cursos" class="btn btn-fill btn-large">Cursos</a> 
                     </div>
                 </div>
             </div>
@@ -93,14 +93,14 @@
         <div class="macbook-wrap wp3"></div>
         <div class="responsive-feature-img"><img src="img/macbook-pro.png" alt="responsive devices"></div>
     </section>
-    <section class="hero-strip section-padding parallax-window" id="cursos">
+    <section class="hero-strip section-padding cursos-index" id="cursos">
         <div class="container">
             <div class="col-md-12 text-center">
                 <h2>
                 Mira los cursos
                 </h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium ea, quasi eum non, nemo, iusto molestiae earum.</p>
-                <a href="cursos.php" class="btn btn-ghost btn-accent btn-large">Ver Cursos</a>
+                <a href="cursos.jsp" class="btn btn-ghost btn-accent btn-large">Ver Cursos</a>
                 <div class="logo-placeholder floating-logo"><img src="img/img1.png" alt="Sketch Logo"></div>
             </div>
         </div>
@@ -187,7 +187,7 @@
                 <div class="col-md-7">
                     <div class="footer-links">
                         <ul class="footer-group">
-                            <li><a href="#assets">Misión</a></li>
+                            <li><a href="index.jsp#assets">Misión</a></li>
                             <li><a href="#cursos">Cursos</a></li>
                             <li><a href="#testimonios">Testimonios</a></li>
                         </ul>
@@ -203,7 +203,7 @@
     </footer>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-    <script src="retina.js"></script>
+    <script src="js/vendor/retina.js"></script>
     <script src="js/jquery.fancybox.pack.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
@@ -245,11 +245,6 @@
             }
         }
     })();
-
-    $(document).ready(function() {
-        $('.hero.parallax-window').parallax({imageSrc: 'img/bg.jpg'});
-        $('.hero-strip.parallax-window').parallax({imageSrc: 'img/bg4.jpg'});
-    });
     </script>
 </body>
 </html>

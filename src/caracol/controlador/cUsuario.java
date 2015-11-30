@@ -23,6 +23,8 @@ public class cUsuario extends HttpServlet {
 	
 	Usuario usuario = new Usuario();
 	Sesion sesion = new Sesion();
+	
+	String msj = "";
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,6 +46,78 @@ public class cUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String opc = request.getParameter("op");
+		switch (opc) {
+		case "in": 
+			registro(request, response);
+			break;
+		case "re":
+			login(request, response);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void registro(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession registroOK = request.getSession();
+		
+		int permiso = Integer.parseInt((String) registroOK.getAttribute("permiso"));
+		
+		usuario.setNombre(request.getParameter("uNombre"));
+		usuario.setDireccion(request.getParameter("uDireccion"));
+		usuario.setTelefono(request.getParameter("uTelefono"));
+		usuario.setEmail(request.getParameter("uEmail"));
+		usuario.setPassword(request.getParameter("uPasse"));
+		usuario.setPermiso(permiso);
+				
+		int emailv = usuario.validarEmail();
+		
+		int r = 0;
+		
+		if (emailv == 0) {
+			switch (permiso) {
+			case 1:
+				Administrador administrador = new Administrador();
+				r = administrador.registrarAdministrador(usuario);
+				break;
+			case 2:
+				Socio socio = new Socio();
+				r = socio.registrarSocio(usuario);
+				break;
+			case 3:
+				Tutor tutor = new Tutor();
+				r = tutor.registrarTutor(usuario);
+				break;
+			default:
+				break;
+			}
+			if (r == 1) {
+				HttpSession sessionOK = request.getSession();
+				
+				// Variables de sesion
+				sessionOK.setAttribute("email", usuario.getEmail());
+				sessionOK.setAttribute("password", usuario.getPassword());
+				sessionOK.setAttribute("permiso", usuario.getPermiso());
+				sessionOK.setAttribute("nombre", usuario.getNombre());
+				sessionOK.setAttribute("telefono", usuario.getTelefono());
+				sessionOK.setAttribute("direccion", usuario.getDireccion());
+				sessionOK.setAttribute("ip", request.getRemoteAddr());
+				
+				msj = "7";
+				response.sendRedirect("home.jsp?msj=" + msj);
+			}
+			else {
+				msj = "1";
+				response.sendRedirect("registroV.jsp?msj=" + msj);
+			}
+		} else {
+			response.sendRedirect("registroV.jsp?msj=2");
+		}
+		
+	}
+
+	private void login(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		usuario.setEmail(request.getParameter("lUsuario"));
 		usuario.setPassword(request.getParameter("lPasse"));
 		
@@ -67,11 +141,9 @@ public class cUsuario extends HttpServlet {
 				admin = admin.getAdministrador(usuario);
 				
 				// Variables de sesion
-				sessionOK.setAttribute("idUsuario", admin.getId_Administrador());
 				sessionOK.setAttribute("email", admin.getEmail());
 				sessionOK.setAttribute("password", admin.getPassword());
 				sessionOK.setAttribute("permiso", admin.getPermiso());
-				sessionOK.setAttribute("idPersona", admin.getId_Persona());
 				sessionOK.setAttribute("nombre", admin.getNombre());
 				sessionOK.setAttribute("telefono", admin.getTelefono());
 				sessionOK.setAttribute("direccion", admin.getDireccion());
@@ -84,11 +156,9 @@ public class cUsuario extends HttpServlet {
 				tutor.getTutor(usuario);
 
 				// Variables de sesion
-				sessionOK.setAttribute("idUsuario", tutor.getId_Tutor());
 				sessionOK.setAttribute("email", tutor.getEmail());
 				sessionOK.setAttribute("password", tutor.getPassword());
 				sessionOK.setAttribute("permiso", tutor.getPermiso());
-				sessionOK.setAttribute("idPersona", tutor.getId_Persona());
 				sessionOK.setAttribute("nombre", tutor.getNombre());
 				sessionOK.setAttribute("telefono", tutor.getTelefono());
 				sessionOK.setAttribute("direccion", tutor.getDireccion());
@@ -100,11 +170,9 @@ public class cUsuario extends HttpServlet {
 				socio.getSocio(usuario);
 
 				// Variables de sesion
-				sessionOK.setAttribute("idUsuario", socio.getId_Socio());
 				sessionOK.setAttribute("email", socio.getEmail());
 				sessionOK.setAttribute("password", socio.getPassword());
 				sessionOK.setAttribute("permiso", socio.getPermiso());
-				sessionOK.setAttribute("idPersona", socio.getId_Persona());
 				sessionOK.setAttribute("nombre", socio.getNombre());
 				sessionOK.setAttribute("telefono", socio.getTelefono());
 				sessionOK.setAttribute("direccion", socio.getDireccion());
@@ -119,8 +187,9 @@ public class cUsuario extends HttpServlet {
 		else {
 			response.sendRedirect("index.jsp?error=v#login");
 		}
+		
 	}
-	
+
 	protected void registrarSesion(String idSesion, HttpServletRequest request, HttpServletResponse response) {
 		sesion.setId_Sesion(idSesion);
 		sesion.setEmail(request.getParameter("lUsuario"));

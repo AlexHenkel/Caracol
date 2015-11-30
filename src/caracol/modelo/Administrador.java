@@ -1,6 +1,7 @@
 package caracol.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Administrador extends Usuario {
 	//Atributos
@@ -35,7 +36,7 @@ public class Administrador extends Usuario {
 				admin.setId_Administrador(rs.getShort("id_Administrador"));
 				admin.setEmail(rs.getString(2));
 				admin.setPassword(rs.getString("password"));
-				admin.setPermiso(rs.getShort("permiso"));
+				admin.setPermiso(rs.getInt("permiso"));
 				admin.setId_Persona(rs.getShort("id_Persona"));
 				admin.setNombre(rs.getString("nombre"));
 				admin.setTelefono(rs.getString("telefono"));
@@ -46,5 +47,21 @@ public class Administrador extends Usuario {
 		} catch (Exception e) {
 			return admin = null;
 		}
+	}
+	
+	public int registrarAdministrador(Usuario usuario) {
+		cx.con(); // Se abre la conexión
+		
+		usuario.registrar_usuario();
+		
+		// Se hace la consulta SQL del beneficiario
+		String com = "INSERT INTO Administrador (id_Administrador, email) " +
+						"VALUES (null, '" + usuario.getEmail() +"')";
+				
+		int res = cx.execQuery(com); // ejecuta consulta
+				
+		cx.desconectar();
+		
+		return res;
 	}
 }

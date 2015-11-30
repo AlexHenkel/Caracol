@@ -34,45 +34,6 @@
             mensaje = "Hubo un problema al registrar, contacte al administrador";
             break;
     }
-
-    String opc = request.getParameter("op");
-
-    String nombre = "";
-    String direccion = "";
-    String telefono = "";
-    String email = "";
-
-    int idBen;
-    int idPer;
-
-    if (opc == null) {
-        opc = "";
-    }
-    if (request.getParameter("idBen") == null) {
-        idBen = 0;
-    }
-    else {
-        idBen = Integer.valueOf(request.getParameter("idBen"));
-    }
-    if (request.getParameter("idPer") == null) {
-        idPer = 0;
-    }
-    else {
-        idPer = Integer.valueOf(request.getParameter("idPer")); 
-    }
-
-    benef.setId_Beneficiario(idBen);
-    benef.setId_Persona(idPer);
-
-    ResultSet rsp = benef.buscar_beneficiario();
-
-    while (rsp.next()) {
-        nombre = rsp.getString("nombre");
-        direccion = rsp.getString("direccion");
-        telefono = rsp.getString("telefono");
-        email = rsp.getString("email");
-    }
-
 %>
 
 <!doctype html>
@@ -107,7 +68,7 @@
                                 <li>
                                     <a>
                                         Bienvenido <br>
-                                        Mauro Amarante
+                                        <%= sesionOK.getAttribute("nombre") %>
                                     </a>
                                 </li>
                                 <br class="hidden-xs">
@@ -166,11 +127,11 @@
             var url = String(location);
             var edit = url.indexOf("op=up");
             if (edit != -1) {
-            	$('.modal-persona-0').modal('show');
+            	$('.modal-curso-edit').modal('show');
             }
-            $('.modal-persona-0').on('hidden.bs.modal', function (e) {
+            $('.modal-curso-edit').on('hidden.bs.modal', function (e) {
               // do something...
-              $( "#benef-edit-form" ).submit();
+              $( "#curso-edit-form" ).submit();
             })
         });
     </script>

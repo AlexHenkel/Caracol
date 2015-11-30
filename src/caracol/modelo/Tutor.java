@@ -35,7 +35,7 @@ public class Tutor extends Usuario {
 				tutor.setId_Tutor(rs.getShort("id_Tutor"));
 				tutor.setEmail(rs.getString(2));
 				tutor.setPassword(rs.getString("password"));
-				tutor.setPermiso(rs.getShort("permiso"));
+				tutor.setPermiso(rs.getInt("permiso"));
 				tutor.setId_Persona(rs.getShort("id_Persona"));
 				tutor.setNombre(rs.getString("nombre"));
 				tutor.setTelefono(rs.getString("telefono"));
@@ -47,5 +47,20 @@ public class Tutor extends Usuario {
 			return tutor = null;
 		}
 	}
-
+	
+	public int registrarTutor(Usuario usuario) {
+		cx.con(); // Se abre la conexión
+		
+		usuario.registrar_usuario();
+		
+		// Se hace la consulta SQL del beneficiario
+		String com = "INSERT INTO Tutor (id_Tutor, email) " +
+						"VALUES (null, '" + usuario.getEmail() +"')";
+		
+		int res = cx.execQuery(com); // ejecuta consulta
+				
+		cx.desconectar();
+		
+		return res;
+	}
 }

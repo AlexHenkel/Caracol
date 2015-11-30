@@ -1,4 +1,5 @@
 <%@page import="java.sql.ResultSet"%>
+<%@ include file="seguridad.jsp" %>
 <jsp:useBean id="benef" class="caracol.modelo.Beneficiario" scope="page" />
 <jsp:useBean id="cx" class="caracol.modelo.Conectar" scope="page" />
 <%
@@ -91,7 +92,7 @@
 
 		      	<%}%>
 			</form>
-	      	<a href="?op=up&idBen=<%=rs.getString("id_Beneficiario")%>&idPer=<%=rs.getString("id_Persona")%>" class="button-edit <%if(opc!=""){%>hidden<%}%>">Editar</a>
+	      	<a href="?op=up&idBen=<%=rs.getString("id_Beneficiario")%>&idPer=<%=rs.getString("id_Persona")%>" class="button-edit big<%if(opc!=""){%>hidden<%}%>">Editar</a>
 	      	
 	    </div>
 	  </div>

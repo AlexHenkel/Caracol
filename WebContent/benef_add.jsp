@@ -33,7 +33,7 @@
                                 <li>
                                     <a>
                                         Bienvenido <br>
-                                        Mauro Amarante
+                                        <%= sesionOK.getAttribute("nombre") %>
                                     </a>
                                 </li>
                                 <br class="hidden-xs">

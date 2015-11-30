@@ -30,6 +30,9 @@
         case 6:
             mensaje = "Hubo un problema al registrar, contacte al administrador";
             break;
+        case 7:
+            mensaje = "Tu usuario ha sido registrado. Bienvenido!";
+            break;
     }
 %>
 <!doctype html>
@@ -86,7 +89,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <h2 class="dashboard-title">Dashboard</h2>
-                    <label for="" style="color: <% if(msj == 1 || msj == 3 || msj == 5) {%>green<%}else{%>red<%}%>"><%=mensaje %></label>
+                    <label for="" style="color: <% if(msj == 1 || msj == 3 || msj == 5 || msj == 7) {%>green<%}else{%>red<%}%>"><%=mensaje %></label>
                     <div class="main">
                         <ul class="cbp-ig-grid">
                             <li>
@@ -108,7 +111,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="cursos_list.php">
+                                <a href="curso_list.jsp">
                                     <span class="cbp-ig-icon cbp-ig-icon-whippy"></span>
                                     <h3 class="cbp-ig-title">Lista de cursos</h3>
                                 </a>

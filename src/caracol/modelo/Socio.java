@@ -35,7 +35,7 @@ public class Socio extends Usuario{
 				socio.setId_Socio(rs.getShort("id_Socio"));
 				socio.setEmail(rs.getString(2));
 				socio.setPassword(rs.getString("password"));
-				socio.setPermiso(rs.getShort("permiso"));
+				socio.setPermiso(rs.getInt("permiso"));
 				socio.setId_Persona(rs.getShort("id_Persona"));
 				socio.setNombre(rs.getString("nombre"));
 				socio.setTelefono(rs.getString("telefono"));
@@ -46,5 +46,21 @@ public class Socio extends Usuario{
 		} catch (Exception e) {
 			return socio = null;
 		}
+	}
+	
+	public int registrarSocio(Usuario usuario) {
+		cx.con(); // Se abre la conexión
+		
+		usuario.registrar_usuario();
+		
+		// Se hace la consulta SQL del beneficiario
+		String com = "INSERT INTO Socio (id_Socio, email) " +
+						"VALUES (null, '" + usuario.getEmail() +"')";
+		
+		int res = cx.execQuery(com); // ejecuta consulta
+				
+		cx.desconectar();
+		
+		return res;
 	}
 }

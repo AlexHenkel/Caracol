@@ -1,9 +1,8 @@
 <%@page import="java.sql.ResultSet"%>
+<%@ include file="seguridad.jsp" %>
 <jsp:useBean id="benef" class="caracol.modelo.Beneficiario" scope="page" />
 <%
 	String opc = request.getParameter("op");
-
-	System.out.println(opc);
 
 	if (opc == null) {
         opc = "";

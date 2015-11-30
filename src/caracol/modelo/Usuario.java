@@ -1,6 +1,7 @@
 package caracol.modelo;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Usuario extends Persona {
 	
@@ -62,5 +63,35 @@ public class Usuario extends Persona {
 		}
 		
 		return permiso;
+	}
+	
+	public int validarEmail() {
+		cx.con();
+		
+		String com = "SELECT email " +
+				"FROM Persona " +
+				"WHERE email='" + this.getEmail() + "'";
+		
+		int res = cx.contarFilas(com);
+		cx.desconectar();
+		return res;
+	}
+	
+	public int registrar_usuario() {
+		cx.con(); // Se abre la conexión
+		
+		this.registrar_persona();
+		
+		// Se hace la consulta SQL del beneficiario
+		String com = "INSERT INTO Usuario (email, password, permiso) " +
+						"VALUES ('" + this.getEmail() + "', '" + 
+									this.getPassword() +"', '" +
+									this.getPermiso() + "')";
+				
+		int res = cx.execQuery(com); // ejecuta consulta
+				
+		cx.desconectar();
+		
+		return res;
 	}
 }
