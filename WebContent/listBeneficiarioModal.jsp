@@ -92,7 +92,7 @@
 
 		      	<%}%>
 			</form>
-	      	<a href="?op=up&idBen=<%=rs.getString("id_Beneficiario")%>&idPer=<%=rs.getString("id_Persona")%>" class="button-edit big<%if(opc!=""){%>hidden<%}%>">Editar</a>
+	      	<a href="?op=up&idBen=<%=rs.getString("id_Beneficiario")%>&idPer=<%=rs.getString("id_Persona")%>" class="button-edit big <%if(opc!=""){%>hidden<%}%>">Editar</a>
 	      	
 	    </div>
 	  </div>

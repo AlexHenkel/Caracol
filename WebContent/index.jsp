@@ -167,7 +167,7 @@
                             </label>
                         </span>
                         <input type="hidden" name="op" value="re">
-                        <input type="submit" class="btn-fill sign-up-btn" name="register" value="Registrar">
+                        <input type="submit" class="btn-fill sign-up-btn" name="register" value="Acceder">
                     </form>
                 </div>
             </div>

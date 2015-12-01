@@ -33,6 +33,9 @@
         case 7:
             mensaje = "Tu usuario ha sido registrado. Bienvenido!";
             break;
+        case 9:
+            mensaje = "No tienes Socios Formadores registrados";
+            break;
     }
 %>
 <!doctype html>

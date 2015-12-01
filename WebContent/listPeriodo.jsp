@@ -16,6 +16,7 @@
 
     while(rs.next()) {
 %>
+						<li>
 							<div class="row">
 								<div class="col-xs-12 col-sm-8 col-md-6">
 									<span class="list-item"><%= rs.getString("periodo") %></span>
@@ -24,6 +25,7 @@
 									<a href="cCodigo?op=del&per=<%=rs.getString("id_Periodo")%>" class="button-delete">Eliminar</a>
 								</div>
 							</div>
+						</li>
 <%
     }
 %>

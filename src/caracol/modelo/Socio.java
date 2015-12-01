@@ -63,4 +63,24 @@ public class Socio extends Usuario{
 		
 		return res;
 	}
+	
+	public ResultSet listar_socio() {
+		String com = "SELECT id_Persona, nombre, telefono, t1.email, direccion, id_Socio, permiso, password " + 
+						"FROM Socio AS t1 " +
+						"INNER JOIN Usuario AS t2 " +
+								"ON t1.email = t2.email " +
+						"INNER JOIN Persona AS t3 " +
+								"ON t2.email = t3.email";
+				
+		ResultSet rs = cx.getDatos(com);
+		
+		return rs;
+	}
+	
+	public int contarSocio() {
+		String com= "SELECT * FROM Socio";
+		
+		int res = cx.contarFilas(com);
+		return res;
+	}
 }

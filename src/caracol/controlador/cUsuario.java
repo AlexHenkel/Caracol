@@ -187,7 +187,7 @@ public class cUsuario extends HttpServlet {
 			
 			Periodo periodo = new Periodo();
 			sessionOK.setAttribute("periodoA", periodo.validarPeriodoActual());
-			
+						
 			// Direccionamos al home
 			response.sendRedirect("home.jsp");
 		}

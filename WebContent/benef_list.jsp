@@ -127,11 +127,11 @@
             var url = String(location);
             var edit = url.indexOf("op=up");
             if (edit != -1) {
-            	$('.modal-curso-edit').modal('show');
+            	$('.modal-persona-0').modal('show');
             }
-            $('.modal-curso-edit').on('hidden.bs.modal', function (e) {
+            $('.modal-persona-0').on('hidden.bs.modal', function (e) {
               // do something...
-              $( "#curso-edit-form" ).submit();
+              $( "#benef-edit-form" ).submit();
             })
         });
     </script>

@@ -94,22 +94,11 @@ public class Periodo {
 
 	public int actualizarPeriodo() {
 		cx.con();
-		String com = "UPDATE Periodo SET " +
-						"estado=0" +
-						"WHERE 1 = 1";
-		cx.execQuery(com);
 		
-		String com1 = "UPDATE Periodo SET " +
-				"estado=1" +
-				"WHERE id_Periodo='" + this.getId_Periodo() + "'";
+		String com = "UPDATE PeriodoActual SET " +
+				"id_Periodo='" + this.getId_Periodo() + "'";
 		
-		int res = cx.execQuery(com1);
-		
-		String com2 = "UPDATE PeriodoActual SET " +
-				"id_Periodo='" + this.getId_Periodo() + "' " +
-				"WHERE 1=1";
-		
-		cx.execQuery(com2);
+		int res = cx.execQuery(com);
 		
 		cx.desconectar();
 		return res;

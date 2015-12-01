@@ -62,7 +62,7 @@ public class cPeriodo extends HttpServlet {
 
 	private void actualizar_Periodo(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		periodo.setId_Periodo(Integer.parseInt(request.getParameter("periodoActual")));
-		
+				
 		int v = periodo.actualizarPeriodo();
 		
 		if (v == 1) {
@@ -70,10 +70,10 @@ public class cPeriodo extends HttpServlet {
 			
 			sessionOK.setAttribute("periodoA", request.getParameter("periodoActual"));
 			
-			msj = "4";
+			msj = "3";
 		}
 		else {
-			msj = "5";
+			msj = "4";
 		}
 		
 		response.sendRedirect("periodo_list.jsp?msj=" + msj);
