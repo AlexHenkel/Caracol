@@ -134,6 +134,18 @@
                                     <h3 class="cbp-ig-title">Códigos de Acceso</h3>
                                 </a>
                             </li>
+                            <li>
+                                <a href="periodo_list.jsp">
+                                    <span class="cbp-ig-icon cbp-ig-icon-milk"></span>
+                                    <h3 class="cbp-ig-title">Periodos escolares</h3>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="grupo_list.jsp">
+                                    <span class="cbp-ig-icon cbp-ig-icon-spectacles"></span>
+                                    <h3 class="cbp-ig-title">Grupos</h3>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 

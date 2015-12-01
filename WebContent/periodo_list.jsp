@@ -88,37 +88,68 @@
     <section class="sign-up section-padding text-center page-content" id="download">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <h1>Códigos de Acesso</h1>
+                <div class="col-md-10 col-md-offset-1">
+                    <h1>Periodos Escolares</h1>
                     <label for="" style="color: <% if(msj == 1 || msj == 3 || msj == 5) {%>green<%}else{%>red<%}%>"><%=mensaje %></label>
-                    <form class="signup-form" action="cCodigo" method="POST" role="form">
+                    <form class="signup-form" action="cPeriodo" method="POST" role="form">
                         <div class="form-hidden">
+                            <h4>Inicio del Periodo</h4>
                             <span class="input input--fumi">
-                                <input class="input__field input__field--fumi" type="text" id="codigo" name="codigo" required/>
-                                <label class="input__label input__label--fumi" for="codigo">
-                                    <i class="fa fa-fw fa-key icon icon--fumi"></i>
-                                    <span class="input__label-content input__label-content--fumi">Código</span>
+                                <input class="input__field input__field--fumi" type="text" id="inicioMes" name="inicioMes" required/>
+                                <label class="input__label input__label--fumi" for="inicioMes">
+                                    <i class="fa fa-fw fa-calendar icon icon--fumi"></i>
+                                    <span class="input__label-content input__label-content--fumi">Mes</span>
                                 </label>
                             </span>
+                            <span class="input input--fumi">
+                                <input class="input__field input__field--fumi" type="text" id="inicioAno" name="inicioAno" required/>
+                                <label class="input__label input__label--fumi" for="inicioAño">
+                                    <i class="fa fa-fw fa-birthday-cake icon icon--fumi"></i>
+                                    <span class="input__label-content input__label-content--fumi">Año</span>
+                                </label>
+                            </span>
+                            <h4>Fin del Periodo</h4>
+                            <span class="input input--fumi">
+                                <input class="input__field input__field--fumi" type="text" id="finMes" name="finMes" required/>
+                                <label class="input__label input__label--fumi" for="finMes">
+                                    <i class="fa fa-fw fa-calendar icon icon--fumi"></i>
+                                    <span class="input__label-content input__label-content--fumi">Mes</span>
+                                </label>
+                            </span>
+                            <span class="input input--fumi">
+                                <input class="input__field input__field--fumi" type="text" id="finAno" name="finAno" required/>
+                                <label class="input__label input__label--fumi" for="finAño">
+                                    <i class="fa fa-fw fa-birthday-cake icon icon--fumi"></i>
+                                    <span class="input__label-content input__label-content--fumi">Año</span>
+                                </label>
+                            </span>
+                            <input type="hidden" name="op" value="in">
+                            <input type="submit" class="btn-fill sign-up-btn w-397" name="register" value="Registrar">
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                    <form class="signup-form" action="cPeriodo" method="POST" role="form">
+                        <div class="form-hidden">
+                            <h4>Selecciona Periodo Actual</h4>
                             <div class="material">
-                                <select name="permiso" placeholder="Tipo de Usuario">
-                                    <option value="1" selected>Administrador</option>
-                                    <option value="2">Socio</option>
-                                    <option value="3">Tutor</option>
+                                <select name="periodoActual" placeholder="Periodo Actual">
+                                    <jsp:include page="updatePeriodo.jsp" flush="true" />
                                 </select>
                             </div>
-                            <input type="hidden" name="op" value="in">
-                            <input type="submit" class="btn-fill sign-up-btn" name="register" value="Registrar">
+                            <input type="hidden" name="op" value="up">
+                            <input type="submit" class="btn-fill sign-up-btn w-397" name="register" value="Actualizar">
                         </div>
                     </form>
                 </div>
             </div>
+            <br><br>
             <div class="row">
                 <div class="col-xs-12">
-                    <h2 class="dashboard-title">Lista de códigos</h2>
+                    <h2 class="dashboard-title">Lista de Periodos</h2>
                     <div class="main">
                         <ul>
-                            <jsp:include page="listCodigo.jsp" flush="true" />
+                            <jsp:include page="listPeriodo.jsp" flush="true" />
                         </ul>
                     </div>
                 </div>

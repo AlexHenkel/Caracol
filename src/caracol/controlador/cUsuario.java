@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import caracol.modelo.Administrador;
+import caracol.modelo.Periodo;
 import caracol.modelo.Sesion;
 import caracol.modelo.Socio;
 import caracol.modelo.Tutor;
@@ -104,6 +105,9 @@ public class cUsuario extends HttpServlet {
 				sessionOK.setAttribute("direccion", usuario.getDireccion());
 				sessionOK.setAttribute("ip", request.getRemoteAddr());
 				
+				Periodo periodo = new Periodo();
+				sessionOK.setAttribute("periodoA", periodo.validarPeriodoActual());
+				
 				msj = "7";
 				response.sendRedirect("home.jsp?msj=" + msj);
 			}
@@ -180,6 +184,9 @@ public class cUsuario extends HttpServlet {
 			default:
 				break;
 			}
+			
+			Periodo periodo = new Periodo();
+			sessionOK.setAttribute("periodoA", periodo.validarPeriodoActual());
 			
 			// Direccionamos al home
 			response.sendRedirect("home.jsp");
